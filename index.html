@@ -3,8 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Stock Market Mentor | Trading Course</title>
+  <title>iBulls Trading Academy</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("598XQCnHfuxG1g-kd"); // ✅ Your Public Key
+    })();
+  </script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Roboto+Slab:wght@700&display=swap');
 
@@ -39,7 +45,6 @@
       margin-bottom: 30px;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
       letter-spacing: 1px;
-      text-align: center;
     }
 
     .button {
@@ -67,19 +72,6 @@
       font-size: 18px;
     }
 
-    .button::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: rgba(255, 255, 255, 0.4);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: width 0.6s, height 0.6s;
-    }
-
     .button::after {
       content: '';
       position: absolute;
@@ -97,27 +89,14 @@
       100% { transform: translateX(100%); }
     }
 
-    .button:hover::before {
-      width: 300px;
-      height: 300px;
-    }
-
     .button:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     }
 
-    .whatsapp-btn {
-      background: linear-gradient(135deg, #25D366, #128C7E);
-    }
-
-    .course-btn {
-      background: linear-gradient(135deg, #F59E0B, #D97706);
-    }
-
-    .video-btn {
-      background: linear-gradient(135deg, #8B5CF6, #6B46C1);
-    }
+    .whatsapp-btn { background: linear-gradient(135deg, #25D366, #128C7E); }
+    .course-btn   { background: linear-gradient(135deg, #F59E0B, #D97706); }
+    .video-btn    { background: linear-gradient(135deg, #8B5CF6, #6B46C1); }
 
     .hidden {
       display: none;
@@ -158,27 +137,14 @@
     }
 
     .footer {
-      margin-top: 20px;
+      margin-top: 30px;
       font-size: 14px;
       color: #9ca3af;
     }
 
-    .icon-bar {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .icon-bar i {
-      font-size: 24px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .icon-bar i:hover {
-      transform: scale(1.2);
-      color: #4A5568;
+    #form-status {
+      margin-top: 10px;
+      font-weight: bold;
     }
 
     @keyframes fadeIn {
@@ -187,11 +153,7 @@
     }
 
     @media (max-width: 768px) {
-      .logo { width: 90%; max-width: 600px; }
-    }
-
-    @media (max-width: 480px) {
-      .logo { width: 90%; max-width: 600px; }
+      .logo { width: 90%; }
     }
   </style>
 </head>
@@ -200,24 +162,22 @@
     <img src="ibulls-logo.png" alt="iBULLS Trading Academy Logo" class="logo" />
     <p class="slogan">Let's Learn, Trade & Succeed</p>
 
-    <a href="https://wa.me/9137315897" class="button whatsapp-btn" target="_blank">
+    <a href="https://wa.me/919999999999" class="button whatsapp-btn" target="_blank">
       <i class="fab fa-whatsapp"></i> Connect on WhatsApp
     </a>
 
-    <div class="button course-btn" onclick="showForm()">
+    <div class="button course-btn" onclick="toggleForm()">
       <i class="fas fa-book"></i> Enquire Now
     </div>
 
-    <div id="enquireNow" class="form-section hidden">
-      <p>Watch the reel here: <a href="https://www.instagram.com/reel/DHQ_r1gIDA7/?igsh=MTBoNXZ6cWFodDR3aQ" target="_blank">Click to Play Reel</a></p>
-      
-      <form action="https://formsubmit.co/mohitking929@gmail.com" method="POST">
-        <input type="hidden" name="_next" value="https://mohitvish4248.github.io/ibullstrading/" />
+    <div id="form-section" class="form-section hidden">
+      <form id="enquiryForm">
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="tel" name="mobile" placeholder="Your Number" pattern="[0-9]{10}" maxlength="10" required />
         <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" rows="4" placeholder="Your Query"></textarea>
+        <textarea name="message" placeholder="Your Query" rows="4"></textarea>
         <button type="submit">Submit</button>
+        <p id="form-status"></p>
       </form>
     </div>
 
@@ -230,20 +190,14 @@
       <video src="video2.mp4" controls></video>
     </div>
 
-    <div class="icon-bar">
-      <i class="fab fa-whatsapp" onclick="window.location.href='https://wa.me/919999999999';"></i>
-      <i class="fas fa-book" onclick="showForm()"></i>
-      <i class="fas fa-play" onclick="toggleVideos()"></i>
-    </div>
-
     <div class="footer">
-      © 2025 iBULLS Trading Academy.
+      © 2025 iBulls Trading Academy. All rights reserved.
     </div>
   </div>
 
   <script>
-    function showForm() {
-      const form = document.getElementById("enquireNow");
+    function toggleForm() {
+      const form = document.getElementById("form-section");
       form.classList.toggle("hidden");
     }
 
@@ -251,6 +205,23 @@
       const videos = document.getElementById("videoSection");
       videos.classList.toggle("hidden");
     }
+
+    document.getElementById("enquiryForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const form = this;
+      const status = document.getElementById("form-status");
+
+      emailjs.sendForm("service_f0afa0h", "template_t8qg9kg", form)
+        .then(() => {
+          status.textContent = "✅ Enquiry Sent Successfully!";
+          status.style.color = "#10b981";
+          form.reset();
+        }, (err) => {
+          status.textContent = "❌ Failed to send. Please try again.";
+          status.style.color = "red";
+          console.log(err);
+        });
+    });
   </script>
 </body>
 </html>
