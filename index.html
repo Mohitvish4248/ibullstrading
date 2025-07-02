@@ -211,6 +211,15 @@
       const form = this;
       const status = document.getElementById("form-status");
 
+      const email = form.email.value.trim();
+      const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+      if (!emailPattern.test(email)) {
+        status.textContent = "❌ Please enter a valid email address.";
+        status.style.color = "red";
+        return;
+      }
+
       emailjs.sendForm("service_f0afa0h", "template_t8qg9kg", form)
         .then(() => {
           status.textContent = "✅ Enquiry Sent Successfully!";
