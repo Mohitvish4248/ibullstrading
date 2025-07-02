@@ -8,7 +8,7 @@
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
     (function(){
-      emailjs.init("598XQCnHfuxG1g-kd"); // ✅ Your Public Key
+      emailjs.init("598XQCnHfuxG1g-kd"); // ✅ Your EmailJS Public Key
     })();
   </script>
   <style>
@@ -190,6 +190,14 @@
     </div>
 
     <div id="form-section" class="form-section hidden">
+      
+      <!-- ✅ Reels Link Added Here -->
+      <p style="margin-bottom: 15px; font-weight: bold;">
+        🎥 <a href="https://www.instagram.com/reel/DHQ_r1gIDA7/?igsh=MTBoNXZ6cWFodDR3aQ" target="_blank" style="color:#2563eb; text-decoration: underline;">
+          Watch Our Instagram Reel
+        </a>
+      </p>
+
       <form id="enquiryForm">
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="tel" name="mobile" placeholder="Your Number" pattern="[0-9]{10}" maxlength="10" required />
@@ -222,13 +230,11 @@
 
   <script>
     function toggleForm() {
-      const form = document.getElementById("form-section");
-      form.classList.toggle("hidden");
+      document.getElementById("form-section").classList.toggle("hidden");
     }
 
     function toggleVideos() {
-      const videos = document.getElementById("videoSection");
-      videos.classList.toggle("hidden");
+      document.getElementById("videoSection").classList.toggle("hidden");
     }
 
     document.getElementById("enquiryForm").addEventListener("submit", function(e) {
