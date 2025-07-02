@@ -1,14 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Stock Market Mentor | Link in Bio</title>
+  <title>Stock Market Mentor | Trading Course</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Roboto+Slab:wght@700&display=swap');
+
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Roboto Slab', serif;
       background: #f3f4f6;
       text-align: center;
       color: #111827;
@@ -24,37 +26,62 @@
     }
 
     .logo {
-      max-width: 200px;
-      margin: 10px auto 20px;
+      max-width: 600px;
+      margin: 0 auto 20px;
       display: block;
     }
 
     .slogan {
-      font-style: italic;
-      font-size: 18px;
-      color: #6b7280;
+      font-family: 'Caveat', cursive;
+      font-size: 28px;
+      font-weight: 700;
+      color: #4A5568;
       margin-bottom: 30px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      letter-spacing: 1px;
+      text-align: center;
     }
 
     .button {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 90%;
       margin: 12px auto;
       padding: 14px;
-      background: linear-gradient(135deg, #667eea, #764ba2);
       color: white;
       text-decoration: none;
       font-weight: 700;
       letter-spacing: 0.5px;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Roboto Slab', serif;
       border-radius: 12px;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(118, 75, 162, 0.3);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .button i {
+      margin-right: 10px;
+      font-size: 18px;
     }
 
     .button:hover {
-      background: linear-gradient(135deg, #5a67d8, #6b46c1);
-      transform: scale(1.03);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .whatsapp-btn {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+    }
+
+    .course-btn {
+      background: linear-gradient(135deg, #F59E0B, #D97706);
+    }
+
+    .video-btn {
+      background: linear-gradient(135deg, #8B5CF6, #6B46C1);
     }
 
     .hidden {
@@ -74,6 +101,7 @@
       border-radius: 8px;
       border: 1px solid #d1d5db;
       font-size: 15px;
+      box-sizing: border-box;
     }
 
     .form-section button {
@@ -90,12 +118,32 @@
       width: 100%;
       border-radius: 10px;
       margin-top: 10px;
+      max-height: 300px;
+      object-fit: cover;
     }
 
     .footer {
-      margin-top: 40px;
+      margin-top: 20px;
       font-size: 14px;
       color: #9ca3af;
+    }
+
+    .icon-bar {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .icon-bar i {
+      font-size: 24px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .icon-bar i:hover {
+      transform: scale(1.2);
+      color: #4A5568;
     }
 
     @keyframes fadeIn {
@@ -104,46 +152,63 @@
     }
 
     @media (max-width: 768px) {
-      .logo { width: 160px; }
+      .logo { width: 90%; max-width: 600px; }
     }
 
     @media (max-width: 480px) {
-      .logo { width: 130px; }
+      .logo { width: 90%; max-width: 600px; }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="logo.png" alt="Logo" class="logo" />
+    <img src="ibulls-logo.png" alt="iBULLS Trading Academy Logo" class="logo" />
     <p class="slogan">Let's Learn, Trade & Succeed</p>
 
-    <a href="https://wa.me/919999999999" class="button" target="_blank">Connect on WhatsApp</a>
+    <a href="https://wa.me/919999999999" class="button whatsapp-btn" target="_blank">
+      <i class="fab fa-whatsapp"></i> Connect on WhatsApp
+    </a>
 
-    <div class="button" onclick="toggleForm()">Course Details & Enquiry Form</div>
-    <div id="enquiryForm" class="form-section hidden">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" rows="4" placeholder="Your Query"></textarea>
-      <button type="submit">Submit</button>
+    <div class="button course-btn" onclick="showForm()">
+      <i class="fas fa-book"></i> Enquire Now
     </div>
 
-    <div class="button" onclick="toggleVideos()">Student Testimonials</div>
+    <div id="enquireNow" class="form-section hidden">
+      <p>Watch the reel here: <a href="https://www.instagram.com/reel/DHQ_r1gIDA7/?igsh=MTBoNXZ6cWFodDR3aQ" target="_blank">Click to Play Reel</a></p>
+      <form action="https://formsubmit.co/mohitking929@gmail.com" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="text" name="mobile" placeholder="Your Number" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="4" placeholder="Your Query"></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <div class="button video-btn" onclick="toggleVideos()">
+      <i class="fas fa-play"></i> Student Testimonials
+    </div>
+
     <div id="videoSection" class="video-section hidden">
       <video src="video1.mp4" controls></video>
       <video src="video2.mp4" controls></video>
     </div>
 
+    <div class="icon-bar">
+      <i class="fab fa-whatsapp" onclick="window.location.href='https://wa.me/919999999999';"></i>
+      <i class="fas fa-book" onclick="showForm()"></i>
+      <i class="fas fa-play" onclick="toggleVideos()"></i>
+    </div>
+
     <div class="footer">
-      &copy; 2025 Stock Market Mentor. All rights reserved.
+      © 2025 i Bulls Trading Academy.
     </div>
   </div>
 
   <script>
-    function toggleForm() {
-      const form = document.getElementById("enquiryForm");
+    function showForm() {
+      const form = document.getElementById("enquireNow");
       form.classList.toggle("hidden");
     }
-
     function toggleVideos() {
       const videos = document.getElementById("videoSection");
       videos.classList.toggle("hidden");
