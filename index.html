@@ -147,6 +147,25 @@
       font-weight: bold;
     }
 
+    .icon-bar {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .icon-bar i {
+      font-size: 24px;
+      color: #4B5563;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .icon-bar i:hover {
+      transform: scale(1.2);
+      color: #1f2937;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: scale(0.98); }
       to { opacity: 1; transform: scale(1); }
@@ -174,7 +193,7 @@
       <form id="enquiryForm">
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="tel" name="mobile" placeholder="Your Number" pattern="[0-9]{10}" maxlength="10" required />
-        <input type="email" name="email" placeholder="Your Email" required />
+        <input type="email" name="email" placeholder="Your Gmail ID" required />
         <textarea name="message" placeholder="Your Query" rows="4"></textarea>
         <button type="submit">Submit</button>
         <p id="form-status"></p>
@@ -188,6 +207,12 @@
     <div id="videoSection" class="video-section hidden">
       <video src="video1.mp4" controls></video>
       <video src="video2.mp4" controls></video>
+    </div>
+
+    <div class="icon-bar">
+      <i class="fab fa-whatsapp" onclick="window.location.href='https://wa.me/919999999999';"></i>
+      <i class="fas fa-book" onclick="toggleForm()"></i>
+      <i class="fas fa-play" onclick="toggleVideos()"></i>
     </div>
 
     <div class="footer">
@@ -212,10 +237,10 @@
       const status = document.getElementById("form-status");
 
       const email = form.email.value.trim();
-      const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
 
       if (!emailPattern.test(email)) {
-        status.textContent = "❌ Please enter a valid email address.";
+        status.textContent = "❌ Please enter a valid Gmail address (e.g. yourname@gmail.com)";
         status.style.color = "red";
         return;
       }
