@@ -8,12 +8,11 @@
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
     (function(){
-      emailjs.init("598XQCnHfuxG1g-kd"); // ✅ Your EmailJS Public Key
+      emailjs.init("Oy3udU69zT7SA9hNt"); // ✅ Sujeet's Public Key
     })();
   </script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Roboto+Slab:wght@700&display=swap');
-
     body {
       margin: 0;
       font-family: 'Roboto Slab', serif;
@@ -21,7 +20,6 @@
       text-align: center;
       color: #111827;
     }
-
     .container {
       max-width: 600px;
       margin: 40px auto;
@@ -30,13 +28,11 @@
       border-radius: 16px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.07);
     }
-
     .logo {
       max-width: 600px;
       margin: 0 auto 20px;
       display: block;
     }
-
     .slogan {
       font-family: 'Caveat', cursive;
       font-size: 28px;
@@ -46,7 +42,6 @@
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
       letter-spacing: 1px;
     }
-
     .button {
       display: flex;
       align-items: center;
@@ -66,12 +61,10 @@
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.3);
     }
-
     .button i {
       margin-right: 10px;
       font-size: 18px;
     }
-
     .button::after {
       content: '';
       position: absolute;
@@ -82,32 +75,26 @@
       background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
       animation: shine 2s infinite;
     }
-
     @keyframes shine {
       0% { transform: translateX(-100%); }
       20% { transform: translateX(100%); }
       100% { transform: translateX(100%); }
     }
-
     .button:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     }
-
     .whatsapp-btn { background: linear-gradient(135deg, #25D366, #128C7E); }
     .course-btn   { background: linear-gradient(135deg, #F59E0B, #D97706); }
     .video-btn    { background: linear-gradient(135deg, #8B5CF6, #6B46C1); }
 
-    .hidden {
-      display: none;
-    }
+    .hidden { display: none; }
 
     .form-section, .video-section {
       margin-top: 20px;
       text-align: left;
       animation: fadeIn 0.3s ease-in-out;
     }
-
     .form-section input, .form-section textarea {
       width: 100%;
       padding: 12px;
@@ -117,7 +104,6 @@
       font-size: 15px;
       box-sizing: border-box;
     }
-
     .form-section button {
       padding: 12px 24px;
       background: #10b981;
@@ -127,7 +113,6 @@
       font-weight: bold;
       cursor: pointer;
     }
-
     video {
       width: 100%;
       border-radius: 10px;
@@ -135,42 +120,35 @@
       max-height: 300px;
       object-fit: cover;
     }
-
     .footer {
       margin-top: 30px;
       font-size: 14px;
       color: #9ca3af;
     }
-
     #form-status {
       margin-top: 10px;
       font-weight: bold;
     }
-
     .icon-bar {
       margin-top: 30px;
       display: flex;
       justify-content: center;
       gap: 20px;
     }
-
     .icon-bar i {
       font-size: 24px;
       color: #4B5563;
       cursor: pointer;
       transition: transform 0.3s ease;
     }
-
     .icon-bar i:hover {
       transform: scale(1.2);
       color: #1f2937;
     }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: scale(0.98); }
       to { opacity: 1; transform: scale(1); }
     }
-
     @media (max-width: 768px) {
       .logo { width: 90%; }
     }
@@ -190,8 +168,6 @@
     </div>
 
     <div id="form-section" class="form-section hidden">
-      
-      <!-- ✅ Reels Link Added Here -->
       <p style="margin-bottom: 15px; font-weight: bold;">
         🎥 <a href="https://www.instagram.com/reel/DHQ_r1gIDA7/?igsh=MTBoNXZ6cWFodDR3aQ" target="_blank" style="color:#2563eb; text-decoration: underline;">
           Watch Our Instagram Reel
@@ -200,7 +176,7 @@
 
       <form id="enquiryForm">
         <input type="text" name="name" placeholder="Your Name" required />
-        <input type="tel" name="mobile" placeholder="Your Number" pattern="[0-9]{10}" maxlength="10" required />
+        <input type="tel" name="phone" placeholder="Your Number" pattern="[0-9]{10}" maxlength="10" required />
         <input type="email" name="email" placeholder="Your Gmail ID" required />
         <textarea name="message" placeholder="Your Query" rows="4"></textarea>
         <button type="submit">Submit</button>
@@ -232,7 +208,6 @@
     function toggleForm() {
       document.getElementById("form-section").classList.toggle("hidden");
     }
-
     function toggleVideos() {
       document.getElementById("videoSection").classList.toggle("hidden");
     }
@@ -251,7 +226,7 @@
         return;
       }
 
-      emailjs.sendForm("service_f0afa0h", "template_t8qg9kg", form)
+      emailjs.sendForm("service_g8efn1r", "template_wry08fa", form)
         .then(() => {
           status.textContent = "✅ Enquiry Sent Successfully!";
           status.style.color = "#10b981";
