@@ -8,7 +8,7 @@
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
     (function(){
-      emailjs.init("Oy3udU69zT7SA9hNt"); // ✅ Sujeet's Public Key
+      emailjs.init("Oy3udU69zT7SA9hNt"); // ✅ Sujeet's EmailJS Public Key
     })();
   </script>
   <style>
@@ -87,7 +87,6 @@
     .whatsapp-btn { background: linear-gradient(135deg, #25D366, #128C7E); }
     .course-btn   { background: linear-gradient(135deg, #F59E0B, #D97706); }
     .video-btn    { background: linear-gradient(135deg, #8B5CF6, #6B46C1); }
-
     .hidden { display: none; }
 
     .form-section, .video-section {
@@ -113,50 +112,42 @@
       font-weight: bold;
       cursor: pointer;
     }
-
     video {
       width: 100%;
-      max-width: 100%;
-      height: auto;
       border-radius: 10px;
       margin-top: 10px;
+      max-height: 350px;
+      object-fit: contain;
     }
-
     .footer {
       margin-top: 30px;
       font-size: 14px;
       color: #9ca3af;
     }
-
     #form-status {
       margin-top: 10px;
       font-weight: bold;
     }
-
     .icon-bar {
       margin-top: 30px;
       display: flex;
       justify-content: center;
       gap: 20px;
     }
-
     .icon-bar i {
       font-size: 24px;
       color: #4B5563;
       cursor: pointer;
       transition: transform 0.3s ease;
     }
-
     .icon-bar i:hover {
       transform: scale(1.2);
       color: #1f2937;
     }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: scale(0.98); }
       to { opacity: 1; transform: scale(1); }
     }
-
     @media (max-width: 768px) {
       .logo { width: 90%; }
     }
@@ -215,21 +206,29 @@
 
   <script>
     function toggleForm() {
-      document.getElementById("form-section").classList.toggle("hidden");
+      const form = document.getElementById("form-section");
+      const video = document.getElementById("videoSection");
+      if (!video.classList.contains("hidden")) {
+        video.classList.add("hidden");
+      }
+      form.classList.toggle("hidden");
     }
 
     function toggleVideos() {
-      document.getElementById("videoSection").classList.toggle("hidden");
+      const form = document.getElementById("form-section");
+      const video = document.getElementById("videoSection");
+      if (!form.classList.contains("hidden")) {
+        form.classList.add("hidden");
+      }
+      video.classList.toggle("hidden");
     }
 
     document.getElementById("enquiryForm").addEventListener("submit", function(e) {
       e.preventDefault();
       const form = this;
       const status = document.getElementById("form-status");
-
       const email = form.email.value.trim();
       const emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
-
       if (!emailPattern.test(email)) {
         status.textContent = "❌ Please enter a valid Gmail address (e.g. yourname@gmail.com)";
         status.style.color = "red";
@@ -248,7 +247,7 @@
         });
     });
 
-    // ✅ Auto Pause Other Videos on Play
+    // ✅ Pause other videos when one is playing
     const videos = document.querySelectorAll("video");
     videos.forEach(video => {
       video.addEventListener("play", () => {
