@@ -8,7 +8,7 @@
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
     (function(){
-      emailjs.init("Oy3udU69zT7SA9hNt");
+      emailjs.init("Oy3udU69zT7SA9hNt"); // ✅ Sujeet's Public Key
     })();
   </script>
   <style>
@@ -114,14 +114,12 @@
       cursor: pointer;
     }
 
-    /* ✅ VIDEO FIX for desktop */
     video {
       width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: contain;
+      max-width: 100%;
+      height: auto;
       border-radius: 10px;
       margin-top: 10px;
-      background: #000;
     }
 
     .footer {
@@ -129,30 +127,36 @@
       font-size: 14px;
       color: #9ca3af;
     }
+
     #form-status {
       margin-top: 10px;
       font-weight: bold;
     }
+
     .icon-bar {
       margin-top: 30px;
       display: flex;
       justify-content: center;
       gap: 20px;
     }
+
     .icon-bar i {
       font-size: 24px;
       color: #4B5563;
       cursor: pointer;
       transition: transform 0.3s ease;
     }
+
     .icon-bar i:hover {
       transform: scale(1.2);
       color: #1f2937;
     }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: scale(0.98); }
       to { opacity: 1; transform: scale(1); }
     }
+
     @media (max-width: 768px) {
       .logo { width: 90%; }
     }
@@ -213,6 +217,7 @@
     function toggleForm() {
       document.getElementById("form-section").classList.toggle("hidden");
     }
+
     function toggleVideos() {
       document.getElementById("videoSection").classList.toggle("hidden");
     }
@@ -241,6 +246,16 @@
           status.style.color = "red";
           console.log(err);
         });
+    });
+
+    // ✅ Auto Pause Other Videos on Play
+    const videos = document.querySelectorAll("video");
+    videos.forEach(video => {
+      video.addEventListener("play", () => {
+        videos.forEach(other => {
+          if (other !== video) other.pause();
+        });
+      });
     });
   </script>
 </body>
